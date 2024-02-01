@@ -51,7 +51,7 @@ with open("in_positional.csv", "w", encoding="UTF-8", newline="") as archivo:
 
 
 
-
+# ________________________________________________________
 
 
 # Leo archivo de entrada delimitado como dataFrame
@@ -91,6 +91,8 @@ output_positional_dataFrame["columna"] = (output_dataFrame["nombre_y_numero"].tr
 # Escribo archivo de salida
 
 output_positional_dataFrame.to_csv("out_positional.csv", "|", index=False, header=False)
+
+# ________________________________________________________
 
 # Transformo dataFrame mergeado
 

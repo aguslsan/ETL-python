@@ -1,24 +1,6 @@
 import csv
+import StringHandling
 import datetime
-
-def saludar(nombre, apellido):
-    print(f"Hola, {nombre} {apellido}!")
-
-# Nombre de la función como string
-nombre_de_funcion = "saludar"
-
-# Parámetros para la función
-parametros = ["agu", "sanchez"]
-
-# Llamando a la función usando el string y pasando parámetros
-if nombre_de_funcion in globals() and callable(globals()[nombre_de_funcion]):
-    funcion = globals()[nombre_de_funcion]
-    if hasattr(funcion, '__call__'):
-        funcion(*parametros)
-    else:
-        print(f"{nombre_de_funcion} no es una función callable.")
-else:
-    print(f"No se encontró la función {nombre_de_funcion}")
 
 datos_lista = [
     ["paco", "42", 3],
@@ -31,7 +13,31 @@ with open("in.csv", "w", encoding="UTF-8", newline="") as archivo:
     # writer.writeheader()
     writer.writerows(datos_lista)
 
+def saludar(nombre, apellido):
+    print(f"Hola, {nombre} {apellido}!")
+
+nombre_de_modulo = "StringHandling"
+nombre_de_funcion = "left"
+parametros = ["agu", 3]
+
+func = getattr(StringHandling, nombre_de_funcion)
+print(func("asdasd", 3))  # 👉️ 'abcd'
+
+
+# Llamando a la función usando el string y pasando parámetros
+"""if nombre_de_funcion in globals() and callable(globals()[nombre_de_funcion]):
+    funcion = globals()[nombre_de_funcion]
+    if hasattr(funcion, '__call__'):
+        funcion(*parametros)
+    else:
+        print(f"{nombre_de_funcion} no es una función callable.")
+else:
+    print(f"No se encontró la función {nombre_de_funcion}")"""
+
+def transformar(transformaciones):
+    pass
+
 
 esquema_entrada = ["nombre", "numero", "divisor"]
 
-transformaciones = ["nombre_y_numero", "nombre|numero"]
+transformaciones = ["nombre_y_numero", "nombre", "StringHandling", "left"]
