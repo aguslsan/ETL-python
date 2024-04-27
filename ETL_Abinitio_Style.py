@@ -29,6 +29,7 @@ def read_files(transformations):
     for x in transformations["files"]:
         globals()[x["variable_name"]] = leer_archivo(x["file_name"], x["schema"].split("|"), "|")
 
+# ________________________________________________________
 
 def leer_archivo(archivo_path, campos, delimiter):
     with open(archivo_path, "r", encoding="UTF-8") as archivo:
@@ -53,17 +54,6 @@ def escribir_archivo(lista, path, delimitador):
 
 
 # ________________________________________________________
-
-"""def load_config(transformations_file):
-    with open(transformations_file, 'r') as f:
-        transformations = yaml.safe_load(f)
-    return transformations
-
-
-def read_files(transformations):
-    for x in transformations["files"]:
-        globals()[x["variable_name"]] = leer_archivo(x["file_name"], x["schema"].split("|"), "|")"""
-
 
 def execute_transformations(transformations):
     output_list = []
@@ -96,7 +86,11 @@ mappings = load_config("mappings.yaml")
 
 read_files(mappings)
 
+
+
 lista_output = execute_transformations(mappings)
 
-print(lista_output)
+for x in lista_output:
+    print(x)
+
 escribir_archivo(lista=lista_output, path="out.csv", delimitador="|")
